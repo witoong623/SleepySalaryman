@@ -8,10 +8,12 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.yanzhenjie.recyclerview.swipe.touch.OnItemMoveListener
 import kotlinx.android.synthetic.main.location_fragment.*
 import net.aliveplex.witoong623.sleepysalaryman.R
 import net.aliveplex.witoong623.sleepysalaryman.adapters.LocationAdapter
@@ -37,7 +39,7 @@ class LocationFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCa
             view!!.findNavController().navigate(R.id.action_locationFragment_to_addLocationFragment)
         }
 
-        viewAdapter = LocationAdapter(listOf())
+        viewAdapter = LocationAdapter(mutableListOf())
         viewManager = LinearLayoutManager(activity)
         val divideritemdecorator = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
 
@@ -45,9 +47,24 @@ class LocationFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCa
             layoutManager = viewManager
             adapter = viewAdapter
             addItemDecoration(divideritemdecorator)
+            isItemViewSwipeEnabled = true
         }
+        location_recyclerview.setOnItemMoveListener(object : OnItemMoveListener {
+            override fun onItemDismiss(srcHolder: RecyclerView.ViewHolder?) {
+                val position = srcHolder?.adapterPosition
+                viewModel.deleteLocation(viewAdapter.locationsData.removeAt(position!!))
+                viewAdapter.notifyItemRemoved(position)
+            }
+
+            override fun onItemMove(srcHolder: RecyclerView.ViewHolder?, targetHolder: RecyclerView.ViewHolder?): Boolean {
+                return false
+            }
+
+        })
+
         viewModel.locations?.observe(this, Observer {
-            viewAdapter.locationsData = it!!
+            viewAdapter.locationsData.clear()
+            viewAdapter.locationsData.addAll(it!!)
             viewAdapter.notifyDataSetChanged()
         })
     }

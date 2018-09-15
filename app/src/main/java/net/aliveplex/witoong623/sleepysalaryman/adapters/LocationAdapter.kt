@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.recyclerview_single_line.view.*
 import net.aliveplex.witoong623.sleepysalaryman.R
 import net.aliveplex.witoong623.sleepysalaryman.database.Location
 
-class LocationAdapter(var locationsData: List<Location>): RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
+class LocationAdapter(var locationsData: MutableList<Location>): RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val linearLayout = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_single_line, parent, false) as LinearLayout
 
@@ -21,7 +21,7 @@ class LocationAdapter(var locationsData: List<Location>): RecyclerView.Adapter<L
     override fun getItemCount() = locationsData.count()
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
-        holder.bindTo(locationsData.get(position))
+        holder.bindTo(locationsData[position])
     }
 
     class LocationViewHolder(containerView: View): RecyclerView.ViewHolder(containerView) {
