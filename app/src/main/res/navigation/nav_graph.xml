@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.LocationFragment"
+        android:label="Location"
+        tools:layout="@layout/location_fragment">
+        <action
+            android:id="@+id/action_locationFragment_to_addLocationFragment"
+            app:destination="@id/selectLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.SettingFragment"
+        android:label="setting_fragment"
+        tools:layout="@layout/setting_fragment" />
+    <fragment
+        android:id="@+id/selectLocationFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.SelectLocationFragment"
+        android:label="Select Location"
+        tools:layout="@layout/select_location_fragment">
+        <action
+            android:id="@+id/action_selectLocationFragment_to_addLocationFragment"
+            app:destination="@id/addLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLocationFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.AddLocationFragment"
+        android:label="Save Location"
+        tools:layout="@layout/add_location_fragment">
+        <argument
+            android:name="lat"
+            android:defaultValue="0" />
+        <argument
+            android:name="lng"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

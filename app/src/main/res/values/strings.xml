@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sleepy Salaryman</string>
+    <string name="title_home">Home</string>
+    <string name="title_location">Location</string>
+    <string name="title_setting">Settings</string>
+    <string name="location_name">Location name</string>
+    <string name="radius_display">Radius from selected position %d meters</string>
+</resources>
