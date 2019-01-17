@@ -7,7 +7,11 @@
         android:id="@+id/homeFragment"
         android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addAlarmFragment"
+            app:destination="@id/addAlarmFragment" />
+    </fragment>
     <fragment
         android:id="@+id/locationFragment"
         android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.LocationFragment"
@@ -43,4 +47,9 @@
             android:name="lng"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/addAlarmFragment"
+        android:name="net.aliveplex.witoong623.sleepysalaryman.fragments.AddAlarmFragment"
+        android:label="Add Alarm"
+        tools:layout="@layout/add_alarm_fragment" />
 </navigation>

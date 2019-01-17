@@ -10,3 +10,16 @@ data class Location(@ColumnInfo(name = "name") val name: String,
                     @ColumnInfo(name = "longitude") val longitude: Double,
                     @ColumnInfo(name = "radius") val radius: Int,
                     @PrimaryKey(autoGenerate = true) val id: Int? = null)
+
+data class Alarm(val location_id: Int,
+                 val name: String,
+                 val label: String,
+                 val isEnable: Boolean,
+                 val onMon: Boolean,
+                 val onTue: Boolean,
+                 val onWed: Boolean,
+                 val onThu: Boolean,
+                 val onFri: Boolean,
+                 val onSat: Boolean,
+                 val onSun: Boolean,
+                 val id: Int? = null)
