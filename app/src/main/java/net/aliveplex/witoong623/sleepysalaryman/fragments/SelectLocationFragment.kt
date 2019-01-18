@@ -1,14 +1,14 @@
 package net.aliveplex.witoong623.sleepysalaryman.fragments
 
 import android.Manifest
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,8 +62,8 @@ class SelectLocationFragment : Fragment(), OnMapReadyCallback, ActivityCompat.On
         add_location_but.setOnClickListener {
             if (selectedLocationLatLng != null) {
                 val bundle = Bundle()
-                bundle.putDouble(LATITUDE_ARGUMENT, selectedLocationLatLng!!.latitude)
-                bundle.putDouble(LONGITUDE_ARGUMENT, selectedLocationLatLng!!.longitude)
+                bundle.putString(LATITUDE_ARGUMENT, selectedLocationLatLng!!.latitude.toString())
+                bundle.putString(LONGITUDE_ARGUMENT, selectedLocationLatLng!!.longitude.toString())
                 it.findNavController().navigate(R.id.action_selectLocationFragment_to_addLocationFragment, bundle)
             } else {
                 Toast.makeText(activity!!.applicationContext, "Please select location before add", Toast.LENGTH_LONG).show()

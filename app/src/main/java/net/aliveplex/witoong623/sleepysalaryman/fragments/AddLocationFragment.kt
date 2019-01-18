@@ -1,10 +1,10 @@
 package net.aliveplex.witoong623.sleepysalaryman.fragments
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -47,8 +47,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback, SeekBar.OnSeekBarCha
         val supportMapFragment = childFragmentManager.findFragmentById(R.id.confirm_location_map) as SupportMapFragment
         supportMapFragment.getMapAsync(this)
 
-        val lat = arguments!!.getDouble(LATITUDE_ARGUMENT)
-        val lng = arguments!!.getDouble(LONGITUDE_ARGUMENT)
+        val lat = arguments!!.getString(LATITUDE_ARGUMENT)!!.toDouble()
+        val lng = arguments!!.getString(LONGITUDE_ARGUMENT)!!.toDouble()
         locationLatLng = LatLng(lat, lng)
 
         radius_sb.setOnSeekBarChangeListener(this)

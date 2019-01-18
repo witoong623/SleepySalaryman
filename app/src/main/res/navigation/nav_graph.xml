@@ -42,10 +42,10 @@
         tools:layout="@layout/add_location_fragment">
         <argument
             android:name="lat"
-            android:defaultValue="0" />
+            app:argType="string" />
         <argument
             android:name="lng"
-            android:defaultValue="0" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addAlarmFragment"

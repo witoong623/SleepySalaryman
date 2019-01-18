@@ -1,7 +1,7 @@
 package net.aliveplex.witoong623.sleepysalaryman.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import android.os.AsyncTask
 import net.aliveplex.witoong623.sleepysalaryman.database.CurrentAppDb
 import net.aliveplex.witoong623.sleepysalaryman.database.Location
